@@ -15,12 +15,21 @@ Este projeto implementa o GoDevProxy, um servidor proxy que pode operar tanto no
 
 ### Executando o servidor
 
+
 Execute diretamente (GoDevProxy SOCKS5 é padrão):
 
 ```bash
 go run . --mode socks   # Para SOCKS5 (padrão)
 go run . --mode http    # Para Proxy HTTP
 go run . --mode socks --port 1080
+
+# Ou compile o binário
+go build -o godevproxy
+
+# Executando o binário
+./godevproxy --mode socks   # Para SOCKS5 (padrão)
+./godevproxy --mode http    # Para Proxy HTTP
+./godevproxy --mode socks --port 1080
 ```
 
 ### Exemplo de uso com curl (GoDevProxy)
@@ -42,8 +51,11 @@ Senha: `123`
 
 Para definir usuário e senha personalizados, rode o servidor assim:
 
+
 ```bash
 go run . --mode socks --user meuuser --pass minhasenha
+# ou
+./godevproxy --mode socks --user meuuser --pass minhasenha
 ```
 E use no curl:
 ```bash
@@ -53,7 +65,7 @@ curl --socks5 meuuser:minhasenha@localhost:1080 https://g1.globo.com
 Por exemplo, para rodar na porta 8080:
 
 ```bash
-./socks5-server 8080
+./godevproxy --port 8080
 ```
 
 O GoDevProxy exibirá logs no console indicando que está pronto para aceitar conexões.
